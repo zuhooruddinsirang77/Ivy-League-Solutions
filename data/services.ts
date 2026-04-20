@@ -1,0 +1,123 @@
+import { Service } from "@/types";
+
+export const services: Service[] = [
+  {
+    id: "svc-001",
+    title: "AI in Fintech",
+    slug: "ai-fintech",
+    category: "Financial Intelligence",
+    icon: "TrendingUp",
+    color: "cyan",
+    shortDescription:
+      "From real-time fraud detection to autonomous underwriting — we build AI systems that handle the complexity of modern financial services.",
+    longDescription:
+      "Financial institutions are sitting on oceans of data with immense predictive potential. We translate that potential into production-grade AI systems that operate with the speed, accuracy, and regulatory rigor the industry demands. Our Fintech AI practice covers the full spectrum — from intelligent risk models to conversational banking agents.",
+    features: [
+      "Credit Risk & Underwriting AI",
+      "Real-Time Fraud Detection Systems",
+      "Regulatory Compliance Automation (AML, KYC)",
+      "Portfolio Optimization Engines",
+      "Algorithmic Trading & Signal Generation",
+      "Personalized Wealth Advisory AI",
+      "Document Intelligence & OCR",
+      "Anomaly Detection & Monitoring",
+    ],
+    useCases: [
+      "Lending platforms reducing default rates with neural risk models",
+      "Payment processors eliminating fraud with graph neural networks",
+      "Wealth managers scaling personalized advice with LLMs",
+      "Banks automating BSA/AML suspicious activity detection",
+    ],
+    techHighlights: ["TensorFlow / PyTorch", "Apache Kafka", "AWS SageMaker", "Graph Neural Networks", "LLMs & RAG"],
+  },
+  {
+    id: "svc-002",
+    title: "AI in Healthcare",
+    slug: "ai-healthcare",
+    category: "Clinical & Life Sciences AI",
+    icon: "Activity",
+    color: "violet",
+    shortDescription:
+      "HIPAA-compliant AI solutions that improve patient outcomes, reduce clinical burden, and unlock value from healthcare data.",
+    longDescription:
+      "Healthcare generates the most complex, highest-stakes data of any industry. Our HealthTech AI practice builds systems that clinicians and operators trust — interpretable, auditable, and designed around clinical workflows. We bring deep experience with EHR integrations, regulatory considerations, and the sensitivity that healthcare AI demands.",
+    features: [
+      "Predictive Patient Risk Stratification",
+      "Ambient Clinical Documentation (Speech AI + LLM)",
+      "Diagnostic Support Systems",
+      "Drug Discovery & Molecular AI",
+      "Population Health Analytics",
+      "Remote Patient Monitoring AI",
+      "Revenue Cycle Intelligence",
+      "SDOH-Informed Care Models",
+    ],
+    useCases: [
+      "Hospital networks reducing readmissions with predictive discharge planning",
+      "Medical groups eliminating documentation burden with ambient AI",
+      "Biotech companies accelerating drug discovery with molecular AI",
+      "Payers building intelligent prior authorization systems",
+    ],
+    techHighlights: ["HL7 FHIR", "Epic / Cerner APIs", "Azure Health Data", "NLP & Medical LLMs", "HIPAA Compliance"],
+  },
+  {
+    id: "svc-003",
+    title: "Custom AI Development",
+    slug: "custom-ai-development",
+    category: "Bespoke AI Engineering",
+    icon: "Cpu",
+    color: "cyan",
+    shortDescription:
+      "End-to-end AI product development — from discovery and data strategy through model engineering, MLOps, and production deployment.",
+    longDescription:
+      "Off-the-shelf AI rarely fits the complexity of real business problems. We partner with you from first principles: understanding your data landscape, defining the right problem, selecting the optimal architecture, and building production systems that scale. Our engineering team operates at the frontier of applied ML — bringing research-grade methods to business impact.",
+    features: [
+      "AI Strategy & Feasibility Assessment",
+      "Data Pipeline Architecture & Engineering",
+      "Custom Model Training & Fine-Tuning",
+      "LLM Application Development & RAG",
+      "MLOps & Model Lifecycle Management",
+      "Explainable AI & Interpretability",
+      "Performance Monitoring & Drift Detection",
+      "Model Security & Adversarial Robustness",
+    ],
+    useCases: [
+      "Startups building AI-native products from the ground up",
+      "Enterprises replacing rule-based systems with learned models",
+      "Research teams needing production engineering for experimental models",
+      "Companies fine-tuning foundation models on proprietary data",
+    ],
+    techHighlights: ["PyTorch / JAX", "Hugging Face", "MLflow / W&B", "Kubernetes / KubeFlow", "Vector Databases"],
+  },
+  {
+    id: "svc-004",
+    title: "Automation & Integrations",
+    slug: "automation-integrations",
+    category: "Intelligent Process Automation",
+    icon: "Zap",
+    color: "gold",
+    shortDescription:
+      "AI-powered automation that eliminates manual workflows, integrates disparate systems, and surfaces intelligence across your operational stack.",
+    longDescription:
+      "The gap between AI models and operational impact is often integration and automation. We bridge that gap — connecting AI intelligence to the systems your team already uses, building pipelines that run autonomously, and ensuring that insights reach the right people at the right time. From intelligent document processing to multi-system orchestration.",
+    features: [
+      "Intelligent Document Processing (IDP)",
+      "AI Agent & Multi-Agent Orchestration",
+      "API Integration & Middleware Engineering",
+      "Robotic Process Automation + AI",
+      "Workflow Orchestration (Temporal / Airflow)",
+      "Event-Driven Architecture Design",
+      "Data Mesh & Pipeline Engineering",
+      "Human-in-the-Loop Workflow Design",
+    ],
+    useCases: [
+      "Financial institutions automating loan origination workflows",
+      "Healthcare systems integrating AI insights into clinical workflows",
+      "Operations teams replacing manual data entry with intelligent extraction",
+      "Companies building AI agents that act across multiple systems",
+    ],
+    techHighlights: ["Apache Airflow", "Temporal.io", "LangChain / Autogen", "Zapier / Make (Advanced)", "n8n / Prefect"],
+  },
+];
+
+export const getServiceBySlug = (slug: string): Service | undefined =>
+  services.find((s) => s.slug === slug);

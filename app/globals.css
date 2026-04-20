@@ -1,0 +1,317 @@
+/* Fonts loaded via next/font/google in layout.tsx — no @import needed.
+   Font pair: Sora (headings) + Inter (body) + JetBrains Mono (accents) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ─────────────────────────────────────────── */
+:root {
+  /* brand palette — teal #446f70 system */
+  --color-bg:         #04080a;
+  --color-surface:    #0e1b1d;
+  --color-cyan:       #5fa8a9;   /* bright teal */
+  --color-cyan-dark:  #446f70;   /* brand primary */
+  --color-violet:     #c8a550;   /* warm gold contrast */
+  --color-text:       #e5eeee;
+  --color-text-muted: #7da5a6;
+  --color-border:     #1b3436;
+
+  scroll-behavior: smooth;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; padding: 0; margin: 0; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  line-height: 1.7;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: #04080a; }
+::-webkit-scrollbar-thumb  { background: #1b3436; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #5fa8a9; }
+
+/* ── Focus ─────────────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid rgba(95, 168, 169, 0.55);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Input / Select / Textarea base ───────────────────────── */
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+select option { background-color: #0e1b1d; }
+
+@layer utilities {
+
+  /* ── Text gradients — teal (#446f70) brand system ──────────
+     main:   soft teal → light teal → near-white (hero headline)
+     cyan:   dark teal → bright teal (stat values, highlights)
+     violet: warm gold → gold-light  (secondary accent)
+  ─────────────────────────────────────────────────────────── */
+  .text-gradient-main {
+    background: linear-gradient(135deg, #7cc3c4 0%, #5fa8a9 45%, #d0e8e9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, #446f70 0%, #5fa8a9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-violet {
+    background: linear-gradient(135deg, #c8a550 0%, #dfc87a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #c8a550 0%, #dfc87a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Glassmorphism — teal-tinted glass panels ───────────── */
+  .glass {
+    background: rgba(9, 18, 20, 0.75);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border: 1px solid rgba(27, 52, 54, 0.9);
+  }
+  .glass-light {
+    background: rgba(14, 27, 29, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(37, 69, 70, 0.6);
+  }
+  .glass-card {
+    background: linear-gradient(135deg, rgba(95,168,169,0.045) 0%, rgba(255,255,255,0.008) 100%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(95,168,169,0.09);
+  }
+  .glass-strong {
+    background: rgba(4, 8, 10, 0.88);
+    backdrop-filter: blur(30px) saturate(1.6);
+    -webkit-backdrop-filter: blur(30px) saturate(1.6);
+    border: 1px solid rgba(27, 52, 54, 1);
+  }
+
+  /* ── Glow — teal & gold ──────────────────────────────────── */
+  .glow-cyan   { box-shadow: 0 0 20px rgba(95,168,169,0.38),  0 0 60px rgba(95,168,169,0.13); }
+  .glow-violet { box-shadow: 0 0 20px rgba(200,165,80,0.35),  0 0 60px rgba(200,165,80,0.12); }
+  .glow-text-cyan { text-shadow: 0 0 18px rgba(95,168,169,0.55), 0 0 36px rgba(95,168,169,0.18); }
+
+  /* ── Grid backgrounds — teal-tinted ─────────────────────── */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(95,168,169,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(95,168,169,0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .bg-grid-sm {
+    background-image:
+      linear-gradient(rgba(95,168,169,0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(95,168,169,0.028) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* ── Animated gradient border ────────────────────────────── */
+  .border-animated {
+    position: relative;
+    overflow: hidden;
+  }
+  .border-animated::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #5fa8a9, transparent, #446f70, transparent, #c8a550, transparent, #5fa8a9);
+    background-size: 300% 300%;
+    animation: gradientShift 5s ease infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* ── Shimmer ─────────────────────────────────────────────── */
+  .shimmer-effect { position: relative; overflow: hidden; }
+  .shimmer-effect::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.07) 50%, transparent 100%);
+    transform: translateX(-100%);
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* ── Section / container ─────────────────────────────────── */
+  .section-padding {
+    padding-top:    clamp(5rem, 9vw, 9rem);
+    padding-bottom: clamp(5rem, 9vw, 9rem);
+  }
+  .container-custom {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left:  clamp(1.25rem, 5vw, 3rem);
+    padding-right: clamp(1.25rem, 5vw, 3rem);
+  }
+
+  /* ── Display typography (Sora — balanced spacing, semibold) ─
+     Sora is optically balanced at larger sizes, so:
+     • Use positive or near-zero letter-spacing (not negative)
+     • font-semibold (600) for headings — more authority, less shout
+     • Generous line-height for readability and premium feel
+  ─────────────────────────────────────────────────────────── */
+  .heading-display {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 700;           /* bold, not extra-bold */
+    letter-spacing: 0.01em;     /* slight positive spacing — Sora reads better */
+    line-height: 1.2;
+    font-feature-settings: "kern" 1;
+  }
+  .heading-lg {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 600;           /* semibold = premium, not heavy */
+    letter-spacing: 0.008em;
+    line-height: 1.3;
+    font-feature-settings: "kern" 1;
+  }
+  .heading-md {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    line-height: 1.4;
+  }
+  .heading-sm {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    line-height: 1.5;
+  }
+
+  /* ── Tag pills — teal & gold ─────────────────────────────── */
+  .tag-cyan {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    background: rgba(95,168,169,0.10);
+    border: 1px solid rgba(95,168,169,0.26);
+    border-radius: 100px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7cc3c4;
+    font-family: var(--font-jetbrains-mono), monospace;
+  }
+  .tag-violet {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    background: rgba(200,165,80,0.10);
+    border: 1px solid rgba(200,165,80,0.26);
+    border-radius: 100px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #dfc87a;
+    font-family: var(--font-jetbrains-mono), monospace;
+  }
+  .tag-neutral {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 100px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7da5a6;
+    font-family: var(--font-jetbrains-mono), monospace;
+  }
+
+  /* ── Marquee masking ─────────────────────────────────────── */
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+}
+
+/* ── Keyframes ─────────────────────────────────────────────── */
+@keyframes gradientShift {
+  0%,100% { background-position: 0% 50%; }
+  50%     { background-position: 100% 50%; }
+}
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50%     { transform: translateY(-18px); }
+}
+@keyframes beam {
+  0%,100% { opacity: 0.25; transform: scaleX(0.8); }
+  50%     { opacity: 1;    transform: scaleX(1); }
+}
+@keyframes orbFloat1 {
+  0%,100% { transform: translate(0,0)     scale(1);    }
+  33%     { transform: translate(35px,-35px) scale(1.06); }
+  66%     { transform: translate(-22px,22px) scale(0.94); }
+}
+@keyframes orbFloat2 {
+  0%,100% { transform: translate(0,0)      scale(1);    }
+  33%     { transform: translate(-45px,22px) scale(1.08); }
+  66%     { transform: translate(28px,-18px) scale(0.93); }
+}
+@keyframes orbFloat3 {
+  0%,100% { transform: translate(0,0)     scale(1);    }
+  33%     { transform: translate(22px,42px) scale(0.95); }
+  66%     { transform: translate(-32px,-28px) scale(1.06); }
+}
+@keyframes glowPulse {
+  0%,100% { box-shadow: 0 0 15px rgba(95,168,169,0.25); }
+  50%     { box-shadow: 0 0 40px rgba(95,168,169,0.55), 0 0 80px rgba(95,168,169,0.18); }
+}
+@keyframes scrollX {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scrollXReverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+@keyframes pulse-glow {
+  0%,100% { box-shadow: 0 0 15px rgba(95,168,169,0.25); }
+  50%     { box-shadow: 0 0 40px rgba(95,168,169,0.55), 0 0 80px rgba(95,168,169,0.18); }
+}
