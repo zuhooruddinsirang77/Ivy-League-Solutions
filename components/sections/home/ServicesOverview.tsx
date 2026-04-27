@@ -88,6 +88,29 @@ function TiltCard({
 }
 
 export function ServicesOverview() {
+  const industryImpact = [
+    {
+      industry: "Healthcare",
+      focus: "Diagnostics & Drug Discovery",
+      metric: "$150B in annual savings (US)",
+    },
+    {
+      industry: "Finance",
+      focus: "Autonomous Audits & Fraud Detection",
+      metric: "88% of firms report revenue gain",
+    },
+    {
+      industry: "Retail",
+      focus: "Agentic Shopping & Personalization",
+      metric: "58% active deployment rate",
+    },
+    {
+      industry: "Manufacturing",
+      focus: "Predictive Maintenance",
+      metric: "Significant reduction in downtime",
+    },
+  ];
+
   return (
     <section className="section-padding relative overflow-hidden">
       {/* Background */}
@@ -116,6 +139,23 @@ export function ServicesOverview() {
             We don&apos;t build demos. We build production systems that generate measurable
             ROI from day one — backed by rigorous engineering and deep domain expertise.
           </p>
+        </Reveal>
+
+        <Reveal className="mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {industryImpact.map((item) => (
+              <div
+                key={item.industry}
+                className="rounded-xl border border-border bg-surface p-5 shadow-card"
+              >
+                <p className="text-sm text-cyan font-display font-600 mb-1">
+                  {item.industry}
+                </p>
+                <p className="text-sm text-text-primary mb-2">{item.focus}</p>
+                <p className="text-sm text-text-secondary">{item.metric}</p>
+              </div>
+            ))}
+          </div>
         </Reveal>
 
         {/* Services grid */}
